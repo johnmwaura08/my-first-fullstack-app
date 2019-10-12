@@ -1,0 +1,22 @@
+{
+  "name": "okcoders-fall-2019-week-4",
+  "version": "1.0.0",
+  "description": "My First ToDo List Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ToDo",
+    "Express",
+    "mongo",
+    "CRUD"
+  ],
+  "author": "Bob Rockers <rrockers@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.4",
+    "nodemon": "^1.19.3"
+  }
+}
