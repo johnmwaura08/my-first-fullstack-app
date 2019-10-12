@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <title>ToDo List Application</title>
 </head>
+
 <body>
-   <h1>My List of things to do:</h1> 
+    <h1>My List of things to do:</h1>
 
-<ul class="todoList">
+    <ul class="todoList">
 
-</ul>
-<script>
-$.getJSON("/todo/all",function(data){
-    data.forEach(function(item,index){
-        $(".todoList").append("<li>" + item.task + "</li>");
+    </ul>
+    <div class="addNew">
+        <input type="text" id="newTask" placeholder="Beat texas"> </input>
+        <button type="button" onclick="AddTask()">Add Task</button>
+    </div>
+    <script>
+        function AddTask() {
+            //figure out what goies in {} using jquery post request
+            $.post('/todo/add', {}).done(function () {
+                console.log($('#newTask').val());
+                $('#newTask').val("");
+            });
 
-    })
-});
-</script>
+        }
+        function reloadPage() {
+            $.getJSON("/todo/all", function (data) {
+                data.forEach(function (item, index) {
+                    $(".todoList").append("<li>" + item.task + "</li>");
+
+                })
+            })
+
+        };
+        $(document).ready(function () {
+            reloadPage();
+        });
+
+    </script>
 
 </body>
+
 </html>
