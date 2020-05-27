@@ -17,6 +17,7 @@
 
 </ul>
 <script>
+    // used jquery
 $.getJSON("/todo/all",function(data){
     data.forEach(function(item,index){
         $(".todoList").append("<li>" + item.task + "</li>");
